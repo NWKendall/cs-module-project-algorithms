@@ -3,9 +3,42 @@ Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
 def single_number(arr):
-    # Your code here    
+    # Your code here
+    
+    # # 1
+    # return 2 * sum(set(arr)) - sum(arr) 
+    
+    # 2 
+    # for v in arr:
+    #     if arr.count(v) == 1:
+    #         return v
 
-    return 2 * sum(set(arr)) - sum(arr) 
+    ## 3
+    ## O(n^2)
+    # no_dupes = []
+    # for v in arr:
+    #     if v not in no_dupes:
+    #         no_dupes.append(v)
+    #     else:
+    #         no_dupes.remove(v)
+    
+    # return no_dupes[0]
+
+    # 4
+    # O(2 * n) ~ O(n)
+    # counts = {}
+
+    # for v in arr:
+    #     if v in counts:
+    #         counts[v] += 1
+    #     else:
+    #         counts[v] = 1
+    
+    # for num in counts:
+    #     if counts[num] == 1:
+    #         return num
+
+
 
 
 
