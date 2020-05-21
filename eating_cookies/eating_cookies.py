@@ -3,18 +3,23 @@ Input: an integer
 Returns: an integer
 '''
 
-def eating_cookies(n, cache=None):
+def eating_cookies(cookies, ways=None):
     # Your code here
-    if n <= 0:
+    # base cases
+    if ways is None:
+        ways = {}
+    if cookies < 2:
         return 1
-    if n == 1:
-        return 1
-    if n == 2:
+    elif cookies == 2:
         return 2
-    if n == 3:
+    elif cookies == 3:
         return 4
+    elif ways and ways[cookies]:
+        return ways[cookies]
+    else:
+        ways[cookies] = eating_cookies(cookies-1, ways) + eating_cookies(cookies-2, ways) + eating_cookies(cookies-3, ways)
     
-    return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
+    return ways[cookies]
 
 
 if __name__ == "__main__":
